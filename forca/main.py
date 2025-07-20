@@ -32,13 +32,15 @@ def main():
         
         # verificar se a letra digitada está na palavra sorteada
         if letra in palavra_sorteada:
-            lista = []
-            for i in range(len(palavra_sorteada)):
-                if palavra_sorteada[i] == letra:
-                    lista.append(letra)
-                else:
-                    lista.append(palavra_escondida[i])
-            palavra_escondida = ''.join(lista)
+            palavra_escondida = ''.join(letra if letra == palavra_sorteada[indice] else palavra_escondida[indice] for indice in range(len(palavra_sorteada)))
+            
+            # lista = []
+            # for i in range(len(palavra_sorteada)):
+            #     if palavra_sorteada[i] == letra:
+            #         lista.append(letra)
+            #     else:
+            #         lista.append(palavra_escondida[i])
+            # palavra_escondida = ''.join(lista)
         else:
             max_tentativas -= 1
             print('Você errou!')
